@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Road Trip Simulator</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #000000;
+        color: #ffffff; /* Todo el texto base ahora es blanco */
+        font-family: "Courier New", Courier, monospace;
+        margin: 0;
+        padding: 20px 20px 80px 20px; /* Padding inferior grande para que el input no tape el texto */
+        min-height: 100vh;
+      }
+
+/* Estilo general para los bloques de arte ASCII */
+.ascii-pc, .ascii-mobile {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre; /* Mantiene la estructura exacta sin saltos automáticos */
+    display: block;
+}
+
+/* Por defecto (Pantallas grandes / PC) */
+.ascii-pc {
+    display: block;
+}
+.ascii-mobile {
+    display: none; /* Se oculta en PC */
+}
+
+      #terminal {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      #output {
+        width: 100%;
+        white-space: pre-wrap;
+        line-height: 1.4;
+        font-size: 16px;
+      }
+      /* Cambiamos las respuestas del usuario ingresadas vía script a blanco también */
+      #output span {
+        color: #ffffff !important;
+      }
+      #input-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        padding: 20px;
+        background-color: #000000;
+        border-top: 1px solid #333333; /* Línea sutil de separación en el fondo */
+      }
+      #input-wrapper {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+      }
+      #prompt {
+        margin-right: 10px;
+        color: #ffffff;
+        user-select: none;
+        font-size: 16px;
+      }
+      #user-input {
+        flex: 1;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-family: inherit;
+        font-size: 16px;
+        outline: none;
+      }
+
+      /* Media Query para Celulares (Pantallas menores a 600px de ancho) */
+      @media (max-width: 600px) {
+        .ascii-pc {
+          display: none; /* Se oculta el dibujo grande */
+        }
+        .ascii-mobile {
+          display: block; /* Se muestra el dibujo chico optimizado */
+          font-size: 14px; /* Opcional: reduce un toque la fuente si es necesario */
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="terminal">
+      <div id="output"></div>
+    </div>
+
+    <div id="input-container">
+      <div id="input-wrapper">
+        <span id="prompt">&gt;</span>
+        <input type="text" id="user-input" autofocus autocomplete="off" />
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
